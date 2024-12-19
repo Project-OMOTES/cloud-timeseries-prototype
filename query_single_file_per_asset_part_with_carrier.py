@@ -365,13 +365,14 @@ per_q = diff / len(asset_ids)
 print(f'Pyarrow took {diff} seconds which means {per_q} second per q to retrieve one kpi for a single asset and all carriers')
 
 start_arrow = time.time()
-df = pa.parquet.read_table(f"test-parquet/3f59be60-1597-46e0-9f1f-c5aa0a466a96/", filesystem=s3, partitioning=asset_carrier_partitioning, filters=[('asset_id', 'in', asset_ids), ('carrier_id', 'in', carrier_ids[:1])], columns=['HeatIn_Q1', 'time', 'asset_id', 'carrier_id']).to_pandas()
+for carrier_id in carrier_ids:
+    df = pa.parquet.read_table(f"test-parquet/3f59be60-1597-46e0-9f1f-c5aa0a466a96/", filesystem=s3, partitioning=asset_carrier_partitioning, filters=[('asset_id', 'in', asset_ids), ('carrier_id', 'in', carrier_ids[:1])], columns=['HeatIn_Q1', 'time', 'asset_id', 'carrier_id']).to_pandas()
 end_arrow = time.time()
 
-
 diff = end_arrow - start_arrow
-per_q = diff / len(asset_ids)
+per_q = diff / len(carrier_ids)
 print(f'Pyarrow took {diff} seconds which means {per_q} second per asset to retrieve one kpi for all assets and one carrier')
+
 
 start_arrow = time.time()
 for asset_id in asset_ids:
