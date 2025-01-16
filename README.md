@@ -14,7 +14,7 @@
 
 # Latency
 On datacenter between 2 VM's (HESI):
-
+```
 DuckDB took 19.128907918930054 seconds which means 0.025505210558573407 second per q when accessing a single KPI individually for a single carrier and asset
 DuckDB took 12.597334146499634 seconds which means 0.050389336585998534 second per q when accessing each profile individually for all carriers
 DuckDB took 11.203127145767212 seconds which means 3.7343757152557373 second per q when accessing each carrier individually for all assets using WHERE
@@ -25,10 +25,11 @@ Pyarrow took 8.10236382484436 seconds which means 0.03240945529937744 second per
 Pyarrow took 4.392092943191528 seconds which means 1.4640309810638428 second per asset to retrieve one kpi for all assets and one carrier
 Pyarrow took 32.70883631706238 seconds which means 0.13083534526824953 second per q to retrieve one kpi for one asset and one carrier using filters
 Pyarrow took 6.256944179534912 seconds which means 0.02502777671813965 second per q to retrieve one kpi for one asset and one carrier using prefix
-
+```
 Peak link speed achieved: 1 Gbps <<-- (Ensure SSD/NVME storage, at least 1 Gbps network link between machines)
 
 Locally:
+```
 DuckDB took 14.120677947998047 seconds which means 0.01882757059733073 second per q when accessing a single KPI individually for a single carrier and asset
 DuckDB took 7.322590589523315 seconds which means 0.02929036235809326 second per q when accessing each profile individually for all carriers
 DuckDB took 4.816350221633911 seconds which means 1.6054500738779705 second per q when accessing each carrier individually for all assets using WHERE
@@ -39,7 +40,7 @@ Pyarrow took 5.035520076751709 seconds which means 0.020142080307006836 second p
 Pyarrow took 2.7862579822540283 seconds which means 0.9287526607513428 second per asset to retrieve one kpi for all assets and one carrier
 Pyarrow took 18.681511402130127 seconds which means 0.0747260456085205 second per q to retrieve one kpi for one asset and one carrier using filters
 Pyarrow took 3.3406684398651123 seconds which means 0.01336267375946045 second per q to retrieve one kpi for one asset and one carrier using prefix
-
+```
 
 # Difficulty when writing unpartitioned dataframes
 - Check if dataframe can be partitioned upon adding data
@@ -76,4 +77,4 @@ be parsed across various versions of ESDL metadata format.
 
 # Hardware requirements
 - NVME/SSD storage (otherwise SLOOOWW)
-- >= 1Gb network link between minio storage & using components
+- `>= 1Gb` network link between minio storage & using components
